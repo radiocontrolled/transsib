@@ -36,7 +36,7 @@ var getViewportDimensions = function(){
 	// landscape
 	if(window.innerHeight < window.innerWidth){
     	width = document.getElementById("map").offsetWidth * 0.90;	
-		height = window.innerHeight * 0.70; 
+		height = window.innerHeight * 0.75; 
 	}
 	
 };
