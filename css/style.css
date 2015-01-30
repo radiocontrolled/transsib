@@ -2,8 +2,8 @@
 body{	
 	font-family: Arial, Helvetica, sans-serif;
 	color: #808080;
-	padding: 1em;
-	margin: 0;
+	padding: 2em ;
+	margin: 0 auto;
 	text-align: center;
 	font-size: 0.90em;
 }
@@ -15,25 +15,23 @@ body{
 }
 
 
-
 #map{
 	width: 60%;
-	float: left;
-	
+	float: left;	
 }
 
 #table{
 	width: 39%;
 	float: left;
 	text-align: left;
-
 }
 
 table{
 	text-align: left;
 	font-size: 75%;
 	border-collapse: collapse;
-	width: 100%;	
+	width: 100%;
+	padding-right: 2em;	
 }
 
 

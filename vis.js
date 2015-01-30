@@ -235,6 +235,11 @@ var drawSVGMap = function(){
 		thead.appendChild(tr);
 		table.appendChild(thead);
 		body.appendChild(table);
+		
+		/* var caption = document.createElement("caption");
+		var captionText = "The Trans-Siberian Railway";
+		caption.innerHTML = captionText;
+		thead.appendChild(caption);*/
 	
 		// table headings
 		for(var key in data[0]){
@@ -261,8 +266,11 @@ var drawSVGMap = function(){
 				if((data[key].Route !== "") ||(data[key]["Distance (km)"] !== "") ){
 				var trBody = document.createElement("tr");
 				trBody.id = data[key].Route;
+				trBody.tabIndex = 0;
 				trBody.addEventListener("mouseover", highlight);
 				trBody.addEventListener("mouseout", unhighlight);
+				trBody.addEventListener("focus", highlight);
+				trBody.addEventListener("blur", unhighlight);
 	
 				// City name
 				var tdBody1 = document.createElement("td");
@@ -275,6 +283,7 @@ var drawSVGMap = function(){
 				trBody.appendChild(tdBody2);
 				
 				tbody.appendChild(trBody);
+				
 				}
 				
 			}
