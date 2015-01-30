@@ -1,0 +1,138 @@
+
+body{	
+	font-family: Arial, Helvetica, sans-serif;
+	color: #808080;
+	padding: 1em;
+	margin: 0;
+	text-align: center;
+	font-size: 1em;
+}
+
+
+.mapLabel{
+	fill: #808080;
+	font-weight: bold;
+}
+
+
+
+#map{
+	width: 60%;
+	float: left;
+	
+}
+
+#table{
+	width: 39%;
+	float: left;
+	text-align: left;
+
+}
+
+table{
+	text-align: left;
+	font-size: 75%;
+	border-collapse: collapse;
+	width: 100%;	
+}
+
+
+thead, caption{
+	font-weight: bold;
+}
+
+.table td {
+    border-top: 1px solid #eee;
+    line-height: 2em;
+    padding: 0.5em;
+    text-align: left;
+    vertical-align: top;
+}
+text{
+	font-size: 0.70em;
+	z-index: 10000;
+}
+
+.label{
+	font-size: 0.60em;
+	text-transform: uppercase;
+	font-weight: bold;
+	fill: #808080;
+	
+}
+
+/* create a different fill 
+ * for each country 
+ */
+
+path.Russia{
+	fill: #eee;
+	stroke: #eee;
+
+}
+
+path.Mongolia{
+	fill: #bebebe;
+	stroke: #bebebe;
+}
+
+path.China{
+	fill: #d6d6d6;
+	stroke: #d6d6d6;
+}
+
+/* create a different rail path 
+ * colour for each segment 
+ * of the line
+ */
+.rail path{
+	fill: none;
+	stroke-width: 1.2px;
+	transition: all 0.5s ease;
+}
+
+.transsiberian, .Trans-Siberian {
+	stroke: #5b5b5b;
+}
+
+.transmongolian, .Trans-Mongolian{
+	stroke: #e74c3c;
+}
+
+.transmanchurian, .Trans-Manchurian{
+	stroke: #2980b9;
+	
+}
+.Common{
+	stroke: #5b5b5b;
+}
+
+circle.transsiberian{
+	fill: #5b5b5b;
+}
+
+circle.transmongolian{
+	fill: #e74c3c;
+} 
+
+
+.highlight{
+	stroke-width: 3px!important;
+	z-index: 100000!important;
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+	body{
+		font-size: 0.80em;	
+	}
+	
+	#map{
+		width: 100%;
+	}
+	#table{
+		width: inherit;
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+}
