@@ -21,22 +21,24 @@ var height,
 	mongolia = "Mongolia",
 	china = "China",
 	label,
-	cityLabel;
+	cityLabel, 
+	scale;
 	
-
 var getViewportDimensions = function(){	
 		
 	
 	// portrait
 	if(window.innerHeight > window.innerWidth){
     	width = document.getElementById("map").offsetWidth * 0.90;	
-		height = window.innerHeight * 0.40; 
+		height = window.innerHeight * 0.45;
+		scale = width/1.3;
 	}
 	
 	// landscape
 	if(window.innerHeight < window.innerWidth){
     	width = document.getElementById("map").offsetWidth * 0.90;	
 		height = window.innerHeight * 0.75; 
+		scale = width/1.7;
 	}
 	
 };
@@ -102,7 +104,7 @@ var drawSVGMap = function(){
 		.rotate([-90, 0])
  		.center([-5, 67])
    		.parallels([52, 64])
-   		.scale(width/1.7)
+   		.scale(scale)
    		.translate([width/2.2, height/3]); 
    
 
@@ -317,7 +319,7 @@ function resize(map){
 		.rotate([-90, 0])
  		.center([-5, 67])
    		.parallels([52, 64])
-   		.scale(width/1.7)
+   		.scale(scale)
    		.translate([width/2.2, height/3]); 
    
    
