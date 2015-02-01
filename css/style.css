@@ -8,6 +8,9 @@ body{
 	font-size: 0.90em;
 }
 
+svg{
+	overflow: visible;
+}
 
 .mapLabel{
 	fill: #808080;
@@ -122,6 +125,7 @@ footer{
 footer a{
 	color: #808080;
 	font-weight: bold;
+	
 }
 footer a:hover, 
 footer a:active, 
@@ -137,7 +141,9 @@ footer a:focus{
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
 	body{
-		font-size: 0.80em;	
+		font-size: 0.70em;	
+		padding-top: 1em;
+		
 	}
 	
 	#map{
@@ -147,6 +153,9 @@ footer a:focus{
 		width: inherit;
 		padding-left: 2em;
 		padding-right: 2em;
+	}
+	footer{
+		padding-bottom: 6em;
 	}
 	
 }

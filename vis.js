@@ -9,20 +9,16 @@ var height,
 	map,  		
 	projection, 
 	path, 
-	city,
 	transsib, 
 	transmongolian,
 	transmanchurian,
 	common,
 	drawRailwaySegment,
 	drawDots, 
-	train, 
-	russia = "Russia",
-	mongolia = "Mongolia",
-	china = "China",
 	label,
 	cityLabel, 
-	scale;
+	scale,
+	portrait; 
 	
 var getViewportDimensions = function(){	
 		
@@ -32,6 +28,8 @@ var getViewportDimensions = function(){
     	width = document.getElementById("map").offsetWidth * 0.90;	
 		height = window.innerHeight * 0.45;
 		scale = width/1.3;
+		portrait = true;
+			
 	}
 	
 	// landscape
@@ -39,6 +37,7 @@ var getViewportDimensions = function(){
     	width = document.getElementById("map").offsetWidth * 0.90;	
 		height = window.innerHeight * 0.75; 
 		scale = width/1.7;
+		portrait = false;
 	}
 	
 };
@@ -212,7 +211,14 @@ var drawSVGMap = function(){
 				}
 			})
 			.append("text")
-			.attr("transform","translate(-17,-6)")
+			.attr("transform", function(d){
+				if(portrait){
+					return "translate(-15,-5)";
+				}
+				else {
+					return "translate(-20,-8)";
+				}
+			})
 			.text(function(d){
 				return d.City;
 			});
@@ -221,8 +227,47 @@ var drawSVGMap = function(){
 			
 	}(cityLabel);
 	
-
+	/* abstract function to generate 
+	* dots (representing cities) 
+	* on a segment of the railway 
+	*/
 	
+   drawDots = function(name){
+   
+   		// dot for each city
+		map
+			.append("g")
+			.classed("cities",true)
+			.selectAll("circle")
+			.data(name)
+			.enter()
+			.append("g")
+			.classed("dot", true)
+			.attr({
+				"transform": function(d){
+					return "translate(" + projection([d.Lat,d.Long]) + ")";
+				}
+			})
+			.append("circle")
+			.attr({
+				"r": function(d){
+					if(portrait){
+						return 1.5;
+					}
+					else{
+						return 2;
+					}
+				}, 
+				"class": function(d){
+					return d.Segment;
+				},
+				"fill": "#5b5b5b"
+			});
+			
+    };
+    
+    drawDots(cityLabel);
+   
 
 	var table = function(data){
 				
@@ -237,11 +282,6 @@ var drawSVGMap = function(){
 		thead.appendChild(tr);
 		table.appendChild(thead);
 		body.appendChild(table);
-		
-		/* var caption = document.createElement("caption");
-		var captionText = "The Trans-Siberian Railway";
-		caption.innerHTML = captionText;
-		thead.appendChild(caption);*/
 	
 		// table headings
 		for(var key in data[0]){
@@ -257,8 +297,6 @@ var drawSVGMap = function(){
 		// body
 		var tbody = document.createElement("tbody");
 		table.appendChild(tbody);
-		
-		
 		
 		// table body content
 		for(var key in data){
@@ -294,9 +332,7 @@ var drawSVGMap = function(){
 	};
 
 	table(cityLabel);
-	
-	
-    
+
 };
 
 
@@ -354,13 +390,27 @@ function resize(map){
 		.select(".Common")
 		.attr("d", pathLine(common));
 					
-	
+	// update dot position
 	d3.selectAll("g.dot")
 		.attr({
 			"transform": function(d){
 				return "translate(" + projection([d.Lat,d.Long]) + ")";
 			}
 		});
+	
+	// update circle size	
+	d3.selectAll("g.dot circle")
+		.attr({
+			"r": function(d){
+				if(portrait){
+					return 1.5;
+				}
+				else{
+					return 2;
+				}
+			}
+		});
+	
 		
 	d3.selectAll(".mapLabel")
 		.attr({
@@ -375,6 +425,15 @@ function resize(map){
 					return "translate(" + projection([d.Lat,d.Long]) + ")";
 			}
 		});
-  
+	
+	d3.selectAll("g.label text")
+		.attr("transform", function(d){
+			if(portrait){
+				return "translate(-15,-5)";
+			}
+			else {
+				return "translate(-20,-8)";
+			}
+		});  
 }
 
