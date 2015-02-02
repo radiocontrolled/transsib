@@ -216,7 +216,8 @@ var drawSVGMap = function(){
 					return "translate(-15,-5)";
 				}
 				else {
-					return "translate(-20,-8)";
+					return "translate(-20,-10)";
+					
 				}
 			})
 			.text(function(d){
@@ -332,6 +333,7 @@ var drawSVGMap = function(){
 	};
 
 	table(cityLabel);
+	
 
 };
 

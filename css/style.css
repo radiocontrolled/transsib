@@ -5,7 +5,7 @@ body{
 	padding: 2em ;
 	margin: 0 auto;
 	text-align: center;
-	font-size: 0.90em;
+	font-size: 0.80em;
 }
 
 svg{
@@ -55,7 +55,7 @@ text{
 }
 
 .label{
-	font-size: 0.60em;
+	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: bold;
 	fill: #808080;
@@ -157,5 +157,9 @@ footer a:focus{
 	footer{
 		padding-bottom: 6em;
 	}
+	
+	.label{
+		font-size: 8px;
+}
 	
 }
