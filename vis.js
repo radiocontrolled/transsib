@@ -198,6 +198,7 @@ var drawSVGMap = function(){
 	}
 	
 	drawLabels = function(cityName){
+	
 		
 		d3	.select("svg")
 			.selectAll("g.label")
@@ -212,12 +213,17 @@ var drawSVGMap = function(){
 			})
 			.append("text")
 			.attr("transform", function(d){
-				if(portrait){
-					return "translate(-15,-5)";
+				if(d.City == "Vladivostok" || d.City == "Beijing"){
+					return "translate(6,3)";
 				}
-				else {
-					return "translate(-20,-10)";
-					
+				if(d.City == "Moscow"){
+					return "translate(6,0)";
+				}
+				if(d.City == "Ulan Ude"){
+					return "translate(-40,10)";
+				}
+				if(d.City == "Chita"){
+					return "translate(6,1)";
 				}
 			})
 			.text(function(d){
@@ -430,12 +436,18 @@ function resize(map){
 	
 	d3.selectAll("g.label text")
 		.attr("transform", function(d){
-			if(portrait){
-				return "translate(-15,-5)";
-			}
-			else {
-				return "translate(-20,-8)";
-			}
+			if(d.City == "Vladivostok" || d.City == "Beijing"){
+					return "translate(6,3)";
+				}
+				if(d.City == "Moscow"){
+					return "translate(6,0)";
+				}
+				if(d.City == "Ulan Ude"){
+					return "translate(-40,10)";
+				}
+				if(d.City == "Chita"){
+					return "translate(6,1)";
+				}
 		});  
 }
 
